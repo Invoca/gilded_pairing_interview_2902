@@ -8,6 +8,7 @@ class Inventory
 
   def update_price
     @items.each do |item|
+
       if item.name != "Fine Art" and item.name != "Concert Tickets"
         if item.price > 0
           if item.name != "Gold Coins"
@@ -31,9 +32,11 @@ class Inventory
           end
         end
       end
+
       if item.name != "Gold Coins"
         item.sell_by = item.sell_by - 1
       end
+
       if item.sell_by < 0
         if item.name != "Fine Art"
           if item.name != "Concert Tickets"

@@ -1,7 +1,8 @@
-# spec/inventory_spec.rb
+# spec/lib/inventory_spec.rb
 
-require 'rspec'
-require_relative '../lib/inventory'
+require_relative '../spec_helper.rb'
+
+require RR + 'lib/inventory'
 
 RSpec.describe 'Inventory' do
   def add_item_and_update_price(name, sell_by, price)
