@@ -7,6 +7,14 @@ class Inventory
   end
 
   def update_price
+    update
+  end
+
+end
+
+__END__
+
+  def update_price
     @items.each do |item|
 
       if item.name != "Fine Art" and item.name != "Concert Tickets"
@@ -56,4 +64,4 @@ class Inventory
       end
     end
   end
-end
+

@@ -10,11 +10,12 @@ class Item
                 :price,   # Integer aka PriceUnit
                 :category # Symbol
 
-  def initialize(name, sell_by, price, categpru)
+  def initialize(name, sell_by, price, category)
     @name     = name
     @sell_by  = sell_by
     @price    = price
-    @category = validate_category(category)
+
+    validate_category(category)
 
     include_category_rules
   end
@@ -27,11 +28,11 @@ class Item
       parts[x][0] = parts[x][0].upcase
     end
 
-    instance_eval("include Category::#{parts.join}")
+    self.include Object.const_get("Category::#{parts.join}")
   end
 
 
   def to_s
-    "#{category}: #{@name}, #{@sell_by}, #{@price}"
+    "#{category_name}: #{@name}, #{@sell_by}, #{@price}"
   end
 end
