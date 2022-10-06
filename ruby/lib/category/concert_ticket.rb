@@ -12,26 +12,27 @@
 =end
 
 module Category
-  module ConcertTicket
+  class ConcertTicket
+    attr_accessor :name
 
-    def category_name
-      "ConcertTicket"
+    def initialize
+      name = "ConcertTicket"
     end
 
     # Updates the item's price and sell_by
     # based upon category rules
-    def update
-      @sell_by -= 1 # units: day
+    def update(sell_by, price)
+      sell_by -= 1 # units: day
 
-      if @sell_by <= 0
-        @price = 0
-        return
+      if sell_by <= 0
+        price = 0
+      else
+        price += 1 if price < 50
+        price += 1 if price < 50 && sell_by <= 10
+        price += 1 if price < 50 && sell_by <= 5
       end
 
-      @price += 1 if @price < 50
-      @price += 1 if @price < 50 && @sell_by <= 10
-      @price += 1 if @price < 50 && @sell_by <= 5
-
+      return sell_by, price
     end
 
   end

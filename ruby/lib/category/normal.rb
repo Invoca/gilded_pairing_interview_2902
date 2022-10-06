@@ -17,20 +17,23 @@ Pretty simple, right? Well this is where it gets interesting:
 =end
 
 module Category
-  module Normal
+  class Normal
+    attr_accessor :name
 
-    def category_name
-      "Normal"
+    def initialize
+      name = "Normal"
     end
 
 
     # Updates the item's price and sell_by
     # based upon category rules
-    def update
-      @sell_by -= 1 # units: day
+    def update(sell_by, price)
+      sell_by -= 1 # units: day
 
-      @price -= 1 if @price > 0
-      @price -= 1 if @price > 0 && @sell_by <= 0
+      price -= 1 if price > 0
+      price -= 1 if price > 0 && sell_by <= 0
+
+      return sell_by, price
     end
 
   end

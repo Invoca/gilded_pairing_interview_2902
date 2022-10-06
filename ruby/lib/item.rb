@@ -28,7 +28,12 @@ class Item
       parts[x][0] = parts[x][0].upcase
     end
 
-    self.include Object.const_get("Category::#{parts.join}")
+    @category = Object.const_get("Category::#{parts.join}").new
+  end
+
+
+  def update
+    @sell_by, @price = category.update(sell_by, price)
   end
 
 

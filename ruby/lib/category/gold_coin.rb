@@ -14,18 +14,19 @@ Except for **Gold Coins**. They are so valuable that their `price` is 80
 =end
 
 module Category
-  module GoldCoin
+  class GoldCoin
+    attr_accessor :name
 
-    def category_name
-      "GoldCoin"
+    def initialize
+      name = "GoldCoin"
     end
 
     # Updates the item's price and sell_by
     # based upon category rules
-    def update
-      @sell_by -= 1 # units: day
+    def update(sell_by, price)
+      price += 1 unless price >= 80
 
-      @price += 1 unless @price >= 80
+      return sell_by, price
     end
 
   end

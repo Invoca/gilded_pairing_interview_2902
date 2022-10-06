@@ -12,20 +12,22 @@
 =end
 
 module Category
-  module FineArt
+  class FineArt
+    attr_accessor :name
 
-    def category_name
-      "FineArt"
+    def initialize
+      name = "FineArt"
     end
 
     # Updates the item's price and sell_by
     # based upon category rules
-    def update
-      @sell_by -= 1 # units: day
+    def update(sell_by, price)
+      sell_by -= 1 # units: day
 
-      @price += 1 if @price < 50
-      @price += 1 if @price < 50 && @sell_by <= 0
+      price += 1 if price < 50
+      price += 1 if price < 50 && sell_by <= 0
 
+      return sell_by, price
     end
 
 

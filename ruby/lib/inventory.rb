@@ -7,7 +7,9 @@ class Inventory
   end
 
   def update_price
-    update
+    @items.each do |item|
+      item.update
+    end
   end
 
 end
