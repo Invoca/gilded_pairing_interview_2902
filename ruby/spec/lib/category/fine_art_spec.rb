@@ -2,8 +2,6 @@
 
 require_relative '../../spec_helper.rb'
 
-require RR + 'lib/category/fine_art.rb'
-
 RSpec.describe 'Category::FineArt' do
 
   it 'should have specs'

@@ -2,8 +2,6 @@
 
 require_relative '../spec_helper.rb'
 
-require RR + 'lib/item.rb'
-
 RSpec.describe 'Item' do
 
   it "should have specs"

@@ -2,8 +2,6 @@
 
 require_relative 'spec_helper.rb'
 
-require RR + 'main'
-
 =begin
   This is basically and integration test.
   Unit tests for components are TBD
@@ -17,16 +15,31 @@ describe 'Inventory' do
     items.first
   end
 
+
   it 'reduces price and sell_by for normal items' do
     updated_item = add_item_and_update_price('Normal Item', 10, 20, :normal)
     expect(updated_item.sell_by).to eq(9)
     expect(updated_item.price).to eq(19)
   end
 
+  it 'reduces price and sell_by for flower items' do
+    updated_item = add_item_and_update_price('Flowers Item', 10, 20, :flowers)
+    expect(updated_item.sell_by).to eq(9)
+    expect(updated_item.price).to eq(18)
+  end
+
+
   it 'reduces price twice as fast for normal items past sell_by' do
     updated_item = add_item_and_update_price('Normal Item', -1, 20, :normal)
     expect(updated_item.price).to eq(18)
   end
+
+
+  it 'reduces price twice as fast for flower items past sell_by' do
+    updated_item = add_item_and_update_price('Flowers Item', -1, 20, :flowers)
+    expect(updated_item.price).to eq(16)
+  end
+
 
   it 'does not allow price to go negative' do
     updated_item = add_item_and_update_price('Normal Item', 10, 0, :normal)
@@ -75,4 +88,7 @@ describe 'Inventory' do
     updated_item = add_item_and_update_price('Concert Tickets', 0, 20, :concert_ticket)
     expect(updated_item.price).to eq(0)
   end
+
+
+
 end

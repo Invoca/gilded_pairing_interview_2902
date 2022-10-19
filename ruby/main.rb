@@ -1,4 +1,3 @@
 # .../main.rb
-
-require_relative 'lib/inventory'
-require_relative 'lib/item'
+require     'require_all'
+require_all 'lib'
